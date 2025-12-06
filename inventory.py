@@ -2,10 +2,30 @@
 
 # Khai báo biến danh sách toàn cục products
 products = []
-
-# Định nghĩa các hàm sẽ được sử dụng (tạm thời để pass)
+# Cập nhật hàm add_product() trong inventory.py
 def add_product():
-    pass
+    global products # Khai báo sử dụng biến toàn cục products
+    print("\n--- NHẬP HÀNG MỚI ---")
+    try:
+        name = input("Nhập tên sản phẩm: ")
+        price = float(input("Nhập giá sản phẩm: "))
+        quantity = int(input("Nhập số lượng tồn kho: "))
+        
+        # Tạo dictionary sản phẩm
+        new_product = {
+            'name': name,
+            'price': price,
+            'qty': quantity
+        }
+        
+        # Thêm vào danh sách products toàn cục
+        products.append(new_product)
+        print(f"Đã nhập hàng thành công: {name} (SL: {quantity})")
+        
+    except ValueError:
+        print("Lỗi: Giá và Số lượng phải là số hợp lệ.")
+
+
 
 def view_inventory():
     pass 
