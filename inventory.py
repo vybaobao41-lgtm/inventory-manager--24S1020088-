@@ -24,11 +24,30 @@ def add_product():
         
     except ValueError:
         print("Lỗi: Giá và Số lượng phải là số hợp lệ.")
-
-
-
+# Cập nhật hàm view_inventory() trong inventory.py
 def view_inventory():
-    pass 
+    print("\n--- XEM TỒN KHO ---")
+    if not products:
+        print("Kho hàng trống. Hãy nhập hàng mới.")
+        return
+
+    print(f"Tổng cộng có {len(products)} loại sản phẩm.")
+    # In tiêu đề bảng
+    print("-" * 40)
+    print(f"| {'Tên Sản Phẩm':<20} | {'Giá':>8} | {'SL':>4} |")
+    print("-" * 40)
+
+    # Duyệt và in thông tin
+    for item in products:
+        name = item['name']
+        price = item['price']
+        qty = item['qty']
+        # Định dạng giá không có số thập phân
+        print(f"| {name:<20} | {price:>8.0f} | {qty:>4} |")
+        
+    print("-" * 40)
+
+
 
 def check_low_stock():
     pass 
