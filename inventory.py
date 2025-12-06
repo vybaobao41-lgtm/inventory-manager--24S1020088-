@@ -49,8 +49,29 @@ def view_inventory():
 
 
 
+# Cập nhật hàm check_low_stock() trong inventory.py
 def check_low_stock():
-    pass 
+    print("\n--- CẢNH BÁO HẾT HÀNG ---")
+    low_stock_items = []
+    
+    # Duyệt danh sách
+    for item in products:
+        if item['qty'] < 5: # Điều kiện cảnh báo: SL < 5
+            low_stock_items.append(item)
+
+    if not low_stock_items:
+        print("Không có sản phẩm nào cần cảnh báo (Tất cả SL >= 5).")
+        return
+        
+    print(f"Tìm thấy {len(low_stock_items)} sản phẩm có số lượng tồn kho thấp:")
+    # In danh sách cảnh báo
+    print("-" * 35)
+    print(f"| {'Tên Sản Phẩm':<20} | {'SL Tồn':>7} |")
+    print("-" * 35)
+    for item in low_stock_items:
+        print(f"| {item['name']:<20} | {item['qty']:>7} |")
+    print("-" * 35)
+    
 
 def main():
     while True:
